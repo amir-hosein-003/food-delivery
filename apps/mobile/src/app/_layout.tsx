@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AnimatedSplashOverlay } from "@/components/animated-icon";
 import { AuthProvider, useAuth } from "@/context/auth-context";
 import { Stack } from "expo-router";
-// import { UserRole } from "@food-delivery/types";
+import { UserRole } from "@food-delivery/types";
 
 const queryClient = new QueryClient({});
 
@@ -24,7 +24,7 @@ function RootNavigation() {
 
       {/* <Stack.Protected guard={!!user && user.role === UserRole.CUSTOMER}>
         <Stack.Screen name="(customer)" />
-      </Stack.Protected>
+      </Stack.Protected>*/}
 
       <Stack.Protected
         guard={!!user && user.role === UserRole.RESTAURANT_OWNER}
@@ -32,9 +32,9 @@ function RootNavigation() {
         <Stack.Screen name="(owner)" />
       </Stack.Protected>
 
-      <Stack.Protected guard={!!user && user.role === UserRole.DRIVER}>
+      {/* <Stack.Protected guard={!!user && user.role === UserRole.DRIVER}>
         <Stack.Screen name="(driver)" />
-      </Stack.Protected> */}
+      </Stack.Protected>  */}
     </Stack>
   );
 }
@@ -43,7 +43,7 @@ export default function TabLayout() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <AnimatedSplashOverlay />
+        {/* <AnimatedSplashOverlay /> */}
         <RootNavigation />
       </AuthProvider>
     </QueryClientProvider>
